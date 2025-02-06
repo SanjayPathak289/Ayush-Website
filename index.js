@@ -2,6 +2,7 @@ const express = require("express");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 const { job } = require("./cron.js");
+const cors = require('cors');
 dotenv.config();
 const app = express();
 app.use(express.json());
@@ -11,6 +12,11 @@ job.start();
 // app.get("/contact", (req, res) => {
 //     res.status(200).send("HII");
 // })
+app.use(cors({
+    origin: ['http://127.0.0.1:5501', 'http://localhost:5501', 'https://ayushpathak12.github.io/'],
+    methods: ['GET', 'POST'],
+    credentials: true
+}));
 app.post("/contact", (req, res) => {
     const createTransporter = async () => {
         const oauth2Client = new OAuth2(
