@@ -54,7 +54,7 @@ app.post("/contact", (req, res) => {
 
     sendmail({
         subject: `Message from a website visitor - ${req.body.name}`,
-        text: `${req.body.email}` + `\n` + req.body.message,
+        text: `${req.body.email}` + `\n` + `${req.body.phone}` + `\n` + `Query : ${req.body.query}` + `\n` + `Additional : ${req.body.additional}` + '\n' + `Gender : ${req.body.gender}`,
         from: req.body.email,
         to: process.env.EMAIL,
     })
