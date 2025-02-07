@@ -13,9 +13,13 @@ job.start();
 //     res.status(200).send("HII");
 // })
 app.use(cors({
-    origin: ['http://127.0.0.1:5501', 'http://localhost:5501', 'https://ayushpathak12.github.io/'],
-    methods: ['GET', 'POST'],
-    credentials: true
+    origin: [
+        'http://127.0.0.1:5501',
+        'http://localhost:5501',
+        'https://ayushpathak12.github.io',
+    ],
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.post("/contact", (req, res) => {
     const createTransporter = async () => {
